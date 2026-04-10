@@ -19,8 +19,12 @@ app.use(morgan('dev'));
 // =============================
 // HEALTH CHECK (FIXED)
 // =============================
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'OK' });
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'TaskPro API is running 🚀',
+    health: '/health',
+    docs: '/api-docs'
+  });
 });
 
 // =============================
