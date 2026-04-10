@@ -6,7 +6,6 @@ A comprehensive, enterprise-grade web application designed to help teams organiz
 
 ## 🚀 Live Demo & Documentation
 
-* **Production Website**: [https://task-and-project-management-system.onrender.com](https://task-and-project-management-system.onrender.com)
 * **Interactive API Docs**: [https://task-and-project-management-system.onrender.com/api-docs](https://task-and-project-management-system.onrender.com/api-docs)
 
 ---
