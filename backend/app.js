@@ -1,58 +1,66 @@
 // Main application configuration and middleware setup for Task Project Management System
+
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const swaggerUi = require('swagger-ui-express');
-const path = require('path');
 
-// Load environment variables from .env file
+// Load environment variables
 dotenv.config();
 
-// Import application routes and middleware
+// =============================
+// HEALTH CHECK (IMPORTANT)
+// =============================
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK' });
+});
+
+
+// Import routes and middleware
 const routes = require('./routes');
 const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 const swaggerSpec = require('./docs/swagger');
 
-// Initialize Express application
+// Initialize Express app
 const app = express();
 
-// Enable Cross-Origin Resource Sharing for all routes
+// =============================
+// MIDDLEWARE
+// =============================
+
+// Enable CORS (allow frontend to access backend)
 app.use(cors());
-// Parse incoming JSON requests
+
+// Parse JSON requests
 app.use(express.json());
-// Log HTTP requests in development mode
+
+// HTTP request logger
 app.use(morgan('dev'));
 
-// Determine static file path based on environment
-const staticPath = process.env.NODE_ENV === 'production' 
-  ? path.join(__dirname, 'public')
-  : path.join(__dirname, '../frontend/dist');
 
-// Serve static files from the determined path
-app.use(express.static(staticPath));
+// =============================
+// SWAGGER DOCS
+// =============================
 
-// Serve Swagger API documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// Mount API routes
+// =============================
+// API ROUTES
+// =============================
+
 app.use('/api', routes);
 
-// Catch-all handler for client-side routing
-app.get('*', (req, res) => {
-  const indexPath = path.join(staticPath, 'index.html');
-  res.sendFile(indexPath, (err) => {
-    if (err) {
-      res.status(404).json({ error: 'Not found' });
-    }
-  });
-});
+// =============================
+// ERROR HANDLING
+// =============================
 
-// Handle 404 errors for non-existent routes
+// 404 handler
 app.use(notFoundHandler);
-// Global error handling middleware
+
+// Global error handler
 app.use(errorHandler);
 
-// Export the configured Express application
+// Export app
 module.exports = app;
-
