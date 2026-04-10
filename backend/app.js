@@ -6,7 +6,6 @@ const swaggerUi = require('swagger-ui-express');
 
 dotenv.config();
 
-// Initialize Express app FIRST
 const app = express();
 
 // =============================
@@ -17,7 +16,26 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // =============================
-// HEALTH CHECK (FIXED)
+// HEALTH CHECK
+// =============================
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK' });
+});
+
+// =============================
+// SWAGGER
+// =============================
+const swaggerSpec = require('./docs/swagger');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// =============================
+// API ROUTES
+// =============================
+const routes = require('./routes');
+app.use('/api', routes);
+
+// =============================
+// ROOT ROUTE
 // =============================
 app.get('/', (req, res) => {
   res.status(200).json({
@@ -28,25 +46,9 @@ app.get('/', (req, res) => {
 });
 
 // =============================
-// IMPORT ROUTES
+// ERROR HANDLING (LAST)
 // =============================
-const routes = require('./routes');
 const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
-const swaggerSpec = require('./docs/swagger');
-
-// =============================
-// SWAGGER
-// =============================
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-// =============================
-// API ROUTES
-// =============================
-app.use('/api', routes);
-
-// =============================
-// ERROR HANDLING
-// =============================
 app.use(notFoundHandler);
 app.use(errorHandler);
 
