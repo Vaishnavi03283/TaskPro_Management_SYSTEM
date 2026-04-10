@@ -1,0 +1,516 @@
+/* ========================================
+   DESIGN SYSTEM
+   Description: Shared design tokens and base styles
+   ======================================== */
+
+:root {
+  /* Colors */
+  --common-bg: #f0f2f8;
+  --common-surface: #ffffff;
+  --common-surface-2: #f5f7fc;
+  --common-surface-3: #eef0f7;
+  --common-border: #e2e6f0;
+  --common-border-2: #d0d5e8;
+
+  /* Text Colors */
+  --common-text: #111827;
+  --common-text-2: #374151;
+  --common-text-3: #6b7280;
+  --common-text-4: #9ca3af;
+
+  /* Status Colors */
+  --common-green: #16a34a;
+  --common-green-soft: rgba(22, 163, 74, 0.1);
+  --common-amber: #d97706;
+  --common-amber-soft: rgba(217, 119, 6, 0.1);
+  --common-red: #dc2626;
+  --common-red-soft: rgba(220, 38, 38, 0.1);
+  --common-slate: #64748b;
+  --common-slate-soft: rgba(100, 116, 139, 0.1);
+
+  /* Blue Palette */
+  --common-blue: #3b5bdb;
+  --common-blue-soft: rgba(59, 91, 219, 0.1);
+  --common-blue-border: rgba(59, 91, 219, 0.2);
+
+  /* Navy Palette */
+  --common-navy: #1e2d5a;
+  --common-navy-hover: #16234a;
+  --common-navy-soft: rgba(30, 45, 90, 0.08);
+  --common-navy-softer: rgba(30, 45, 90, 0.05);
+
+  /* Dimensions */
+  --common-radius: 12px;
+  --common-radius-sm: 8px;
+  --common-radius-xs: 6px;
+  --common-radius-pill: 999px;
+
+  /* Shadows */
+  --common-shadow: 0 1px 4px rgba(30, 45, 90, 0.06), 0 4px 16px rgba(30, 45, 90, 0.06);
+  --common-shadow-md: 0 4px 16px rgba(30, 45, 90, 0.10), 0 8px 32px rgba(30, 45, 90, 0.08);
+  --common-shadow-lg: 0 8px 32px rgba(30, 45, 90, 0.14), 0 16px 48px rgba(30, 45, 90, 0.10);
+  --common-focus: 0 0 0 3px rgba(59, 91, 219, 0.2);
+
+  /* Typography */
+  --common-font: 'Sora', system-ui, sans-serif;
+  --common-mono: 'JetBrains Mono', monospace;
+
+  /* Transitions */
+  --common-transition: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Reset */
+* {
+  box-sizing: border-box;
+}
+
+/* ========================================
+   BUTTONS
+   Description: Primary, secondary, and small button variants
+   ======================================== */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--common-navy);
+  color: #fff;
+  border: 1px solid var(--common-navy);
+  border-radius: var(--common-radius-sm);
+  font-family: var(--common-font);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--common-transition);
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--common-navy-hover);
+  border-color: var(--common-navy-hover);
+  box-shadow: 0 4px 16px rgba(30, 45, 90, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--common-surface);
+  color: var(--common-text-2);
+  border: 1px solid var(--common-border);
+  border-radius: var(--common-radius-sm);
+  font-family: var(--common-font);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--common-transition);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: var(--common-surface-2);
+  border-color: var(--common-border-2);
+  color: var(--common-text);
+}
+
+.btn-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--common-radius-xs);
+  border: 1px solid var(--common-border);
+  background: var(--common-surface);
+  color: var(--common-text);
+  font-family: var(--common-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--common-transition);
+}
+
+.btn-small:hover {
+  background: var(--common-surface-2);
+  border-color: var(--common-border-2);
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   FORM ELEMENTS
+   Description: Form groups, inputs, and layout utilities
+   ======================================== */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0;
+}
+
+.form-group label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--common-text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--common-mono);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--common-surface);
+  border: 1px solid var(--common-border);
+  border-radius: var(--common-radius-sm);
+  font-family: var(--common-font);
+  font-size: 0.9375rem;
+  color: var(--common-text);
+  transition: border-color var(--common-transition), box-shadow var(--common-transition), background var(--common-transition);
+  appearance: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--common-text-4);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--common-blue);
+  box-shadow: var(--common-focus);
+  background: var(--common-surface);
+}
+
+.form-group input:disabled,
+.form-group textarea:disabled,
+.form-group select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--common-surface-2);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.form-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.875rem center;
+  padding-right: 2.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+/* Form Card Container */
+.form-card {
+  background: var(--common-surface);
+  border: 1px solid var(--common-border);
+  border-radius: var(--common-radius);
+  box-shadow: var(--common-shadow);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ========================================
+   STATUS & PRIORITY
+   Description: Status pills, badges, and priority indicators
+   ======================================== */
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--common-radius-pill);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.status-pill::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.status-pill.large {
+  font-size: 0.8rem;
+  padding: 0.4rem 1rem;
+}
+
+.status-completed  { background: var(--common-green-soft); color: var(--common-green); }
+.status-in-progress { background: var(--common-amber-soft); color: var(--common-amber); }
+.status-pending    { background: var(--common-slate-soft); color: var(--common-slate); }
+
+.priority { font-weight: 700; font-size: 0.875rem; }
+.priority-high    { color: var(--common-red); }
+.priority-medium  { color: var(--common-amber); }
+.priority-low     { color: var(--common-green); }
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--common-radius-pill);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.status-badge.small { padding: 0.2rem 0.55rem; font-size: 0.67rem; }
+.status-badge.large { padding: 0.45rem 0.9rem; font-size: 0.8rem; }
+
+/* ========================================
+   LOADING & EMPTY STATES
+   Description: Loading indicators and empty state styling
+   ======================================== */
+
+.empty-state {
+  text-align: center;
+  padding: 3.5rem 2rem;
+  color: var(--common-text-3);
+  background: var(--common-surface);
+  border: 1px solid var(--common-border);
+  border-radius: var(--common-radius);
+  box-shadow: var(--common-shadow);
+  font-size: 0.9375rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--common-border);
+  border-top-color: var(--common-navy);
+  border-radius: 50%;
+  animation: common-spin 0.75s linear infinite;
+  margin: 3rem auto;
+}
+
+.loading {
+  text-align: center;
+  color: var(--common-text-3);
+  font-style: italic;
+  padding: 1.5rem;
+  font-weight: 500;
+}
+
+@keyframes common-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   NAVIGATION
+   Description: Back button and navigation utilities
+   ======================================== */
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
+  background: none;
+  border: none;
+  color: var(--common-blue);
+  font-family: var(--common-font);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: gap var(--common-transition), color var(--common-transition);
+}
+
+.back-btn:hover {
+  color: var(--common-navy);
+  gap: 0.6rem;
+}
+
+.back-arrow {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ========================================
+   ACTION BUTTONS
+   Description: Edit and delete button variants
+   ======================================== */
+
+.edit-btn, .delete-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.875rem;
+  border-radius: var(--common-radius-xs);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--common-font);
+  cursor: pointer;
+  transition: all var(--common-transition);
+  border: 1.5px solid;
+}
+
+.edit-btn {
+  background: var(--common-navy-softer);
+  color: var(--common-navy);
+  border-color: rgba(30, 45, 90, 0.15);
+}
+
+.edit-btn:hover {
+  background: var(--common-navy);
+  color: #fff;
+  border-color: var(--common-navy);
+  transform: translateY(-1px);
+}
+
+.delete-btn {
+  background: var(--common-red-soft);
+  color: var(--common-red);
+  border-color: rgba(220, 38, 38, 0.2);
+}
+
+.delete-btn:hover {
+  background: var(--common-red);
+  color: #fff;
+  border-color: var(--common-red);
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   PROJECT FOOTER
+   Description: Meta cards for project information display
+   ======================================== */
+
+.form-meta-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.form-meta-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: var(--common-surface);
+  border: 1px solid var(--common-border);
+  border-radius: var(--common-radius);
+  box-shadow: var(--common-shadow);
+  transition: all var(--common-transition);
+}
+
+.form-meta-card:hover {
+  border-color: var(--common-border-2);
+  box-shadow: var(--common-shadow-md);
+  transform: translateY(-2px);
+}
+
+.form-meta-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--common-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  background: var(--common-blue-soft);
+  color: var(--common-blue);
+}
+
+.form-meta-card-content h4 {
+  margin: 0 0 0.2rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--common-text);
+  letter-spacing: -0.01em;
+}
+
+.form-meta-card-content p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--common-text-3);
+  line-height: 1.5;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   Description: Mobile-first responsive breakpoints
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .form-row { grid-template-columns: 1fr; }
+  .form-meta-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-actions { flex-direction: column; }
+  .form-card { padding: 1.25rem; }
+  .form-meta-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .form-meta-card { padding: 1rem; }
+}
+
+@media (max-width: 480px) {
+  .btn-primary, .btn-secondary {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+  .form-meta-cards { gap: 0.75rem; }
+  .form-meta-card {
+    padding: 0.875rem;
+    gap: 0.625rem;
+  }
+  .form-meta-card-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  .form-meta-card-content h4 { font-size: 0.78rem; }
+  .form-meta-card-content p { font-size: 0.72rem; }
+}
