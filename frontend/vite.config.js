@@ -6,5 +6,9 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true
+  },
+  define: {
+    // Ensure environment variables are available at build time
+    'import.meta.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || 'https://taskpro-management-system.onrender.com/api')
   }
 })
