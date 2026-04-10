@@ -9,6 +9,6 @@ export default defineConfig({
   },
   define: {
     // Ensure environment variables are available at build time
-    'import.meta.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || 'https://taskpro-management-system.onrender.com/api')
+    'import.meta.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || 'http://localhost:5001/api')
   }
 })
