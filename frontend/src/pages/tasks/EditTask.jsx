@@ -26,6 +26,11 @@ const EditTask = () => {
   const [fetchLoading, setFetchLoading] = useState(true);
   const [task, setTask] = useState(null);
 
+  const formatDateForInput = (dateString) => {
+    if (!dateString) return '';
+    return new Date(dateString).toISOString().split('T')[0];
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,7 +40,7 @@ const EditTask = () => {
           title: taskRes.data.title || '',
           description: taskRes.data.description || '',
           priority: taskRes.data.priority || 'Medium',
-          due_date: taskRes.data.due_date || '',
+          due_date: formatDateForInput(taskRes.data.due_date) || '',
           assigned_user: taskRes.data.assigned_user || '',
           project_id: taskRes.data.project_id || '',
           status: taskRes.data.status || 'Pending',
@@ -161,7 +166,7 @@ const EditTask = () => {
             >
               <option value="Pending">Pending</option>
               <option value="In Progress">In Progress</option>
-              <option value="Complete">Complete</option>
+              <option value="Completed">Completed</option>
             </select>
           </div>
         </div>

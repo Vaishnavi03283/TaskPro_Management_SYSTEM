@@ -24,6 +24,11 @@ const EditProject = () => {
   const [project, setProject] = useState(null);
   const [priority, setPriority] = useState('High');
 
+  const formatDateForInput = (dateString) => {
+    if (!dateString) return '';
+    return new Date(dateString).toISOString().split('T')[0];
+  };
+
   useEffect(() => {
     const fetchProject = async () => {
       try {
@@ -32,8 +37,8 @@ const EditProject = () => {
         setFormData({
           name: project.name || '',
           description: project.description || '',
-          start_date: project.start_date || '',
-          end_date: project.end_date || '',
+          start_date: formatDateForInput(project.start_date) || '',
+          end_date: formatDateForInput(project.end_date) || '',
           status: project.status || 'Planned',
         });
       } catch (error) {

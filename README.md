@@ -2,13 +2,6 @@
 
 A comprehensive, enterprise-grade web application designed to help teams organize, assign, and track project tasks efficiently. This system features robust **Role-Based Access Control (RBAC)** and secure authentication, engineered strictly according to **SOLID principles** and **Clean Architecture** for maximum scalability and maintainability.
 
----
-
-## 🚀 Live Demo & Documentation
-
-* **Interactive API Docs**: [https://task-and-project-management-system.onrender.com/api-docs](https://task-and-project-management-system.onrender.com/api-docs)
-
----
 
 ## 📋 Business Requirements Implementation
 

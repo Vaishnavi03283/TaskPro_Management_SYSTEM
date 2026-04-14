@@ -28,7 +28,7 @@ const Sidebar = () => {
       {/* TaskPro at top of sidebar */}
       <div className="sidebar-taskpro">
         <div className="sidebar-taskpro-logo" onClick={() => navigate('/')}>
-          TaskPro
+          ✦ TaskPro
         </div>
       </div>
       

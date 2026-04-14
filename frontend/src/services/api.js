@@ -7,6 +7,8 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api'
 
 // Add debug logging
 console.log('API_BASE_URL:', API_BASE_URL);
+
+// Axios Instance Creation
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -14,6 +16,7 @@ const api = axios.create({
   },
 });
 
+// Request Interceptor --> Add Authorization header to all requests.
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -27,7 +30,7 @@ api.interceptors.request.use(
   }
 );
 
-
+//Response Interceptor --> Handle 401 errors
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -48,6 +51,8 @@ api.interceptors.response.use(
   }
 );
 
+
+// Toast Notification Functions
 export const showSuccessToast = (message) => {
   toast.success(message, {
     position: 'top-right',

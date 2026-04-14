@@ -113,7 +113,7 @@ const ManagerDashboard = () => {
               New Project
             </Link>
             <Link to="/projects" className="view-all-link">
-              View All <ArrowRight size={16} />
+              View All <ArrowRight size={20} />
             </Link>
           </div>
         </div>
@@ -136,7 +136,7 @@ const ManagerDashboard = () => {
               >
                 <div className="project-card-header">
                   <h3>{project.name}</h3>
-                  <ArrowRight size={16} className="card-arrow" />
+                  <ArrowRight size={20} className="card-arrow" />
                 </div>
                 <p className="project-description">
                   {project.description}
@@ -162,9 +162,11 @@ const ManagerDashboard = () => {
         )}
       </div>
 
-      <div className="empty-state" style={{ marginTop: '2rem' }}>
-        <p>👋 Welcome, Manager! Manage your projects and tasks from the sidebar.</p>
-      </div>
+        <div className="empty-state" style={{ marginTop: '2rem' }}>
+          <p>✦ Welcome, Manager ✦</p>
+          <p> Streamline your projects, assign tasks, and track progress — all from your dashboard.</p>
+        </div>
+
     </div>
   );
 };

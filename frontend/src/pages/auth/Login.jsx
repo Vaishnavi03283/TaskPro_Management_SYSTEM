@@ -14,6 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
+  // Form Submission Handler 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -24,7 +25,8 @@ const Login = () => {
         setLoading(false);
         return;
       }
-
+      
+      // LOGIN API CALLED 
       const response = await authAPI.login(email, password);
       
       if (response && response.token && response.user) {
@@ -47,7 +49,7 @@ const Login = () => {
     <div className="auth-container">
       {/* Auth Header */}
       <div className="auth-header">
-        <div className="auth-logo">TaskPro</div>
+        <div className="auth-logo">✦ TaskPro</div>
         <div className="auth-home-link" onClick={() => navigate('/')}>
           Home
         </div>

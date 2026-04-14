@@ -27,6 +27,12 @@ const Register = () => {
         return;
       }
 
+      if (!email.includes('@') || !email.includes('.com')) {
+        showErrorToast('Please enter a valid email (must include @ and .com)');
+        setLoading(false);
+        return;
+      }
+
       if (password !== confirmPassword) {
         showErrorToast('Passwords do not match');
         setLoading(false);
@@ -39,6 +45,7 @@ const Register = () => {
         return;
       }
       
+      // REGISTER API CALLED 
       await authAPI.register(name, email, password, role);
       
       showSuccessToast('Registration successful! Please login to continue.');
@@ -54,7 +61,7 @@ const Register = () => {
     <div className="auth-container">
       {/* Auth Header */}
       <div className="auth-header">
-        <div className="auth-logo">TaskPro</div>
+        <div className="auth-logo">✦TaskPro</div>
         <div className="auth-home-link" onClick={() => navigate('/')}>
           Home
         </div>

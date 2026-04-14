@@ -5,7 +5,7 @@ import styles from "./Home.module.css";
 const Home = () => {
   const navigate = useNavigate();
 
-  // ✅ SMOOTH SCROLL FUNCTION
+  // SMOOTH SCROLL FUNCTION
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {

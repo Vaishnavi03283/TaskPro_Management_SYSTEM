@@ -221,13 +221,14 @@ const ProjectList = () => {
       {/* Search and Filter Section */}
       <div className="search-filter-section">
         <div className="search-container">
-          <Search size={15} className="search-icon" />
+          <Search size={15} className="search-icon"/>
           <input
             type="text"
             placeholder="Filter by name, creator or tech..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
+            style={{ paddingLeft: '30px' }}
           />
         </div>
 
@@ -269,7 +270,7 @@ const ProjectList = () => {
                   <div className="project-card-header">
                     <h3>{project.name}</h3>
                     <Link to={`/project/${project.id}`} className="view-project-link">
-                      <ArrowRight size={16} className="card-arrow" />
+                      <ArrowRight size={20} className="card-arrow" />
                     </Link>
                   </div>
                 </div>

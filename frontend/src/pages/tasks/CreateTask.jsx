@@ -167,7 +167,7 @@ const CreateTask = () => {
             >
               <option>Pending</option>
               <option>In Progress</option>
-              <option>Complete</option>
+              <option>Completed</option>
             </select>
           </div>
         </div>

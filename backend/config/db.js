@@ -1,4 +1,4 @@
-// PostgreSQL database connection configuration and pool management
+  // PostgreSQL database connection configuration and pool management
 const { Pool } = require('pg');
 const dotenv = require('dotenv');
 

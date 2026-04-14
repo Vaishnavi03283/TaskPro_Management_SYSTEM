@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 // Load environment variables for JWT secret
 dotenv.config();
 
-// Middleware to authenticate JWT tokens from Authorization header
+// Middleware To authenticate JWT tokens from Authorization header
 function authenticateJWT(req, res, next) {
   const authHeader = req.headers.authorization;
 
